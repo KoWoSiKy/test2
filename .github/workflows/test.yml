@@ -46,9 +46,12 @@ jobs:
           
       - name: Clear Folder # 清空文件夹
         run: |
-          rm -rf jtl/* 
-          rm -rf html/* 
-        
+          rm -rf jtl 
+          rm -rf html 
+      - name: create Folder # 创建文件夹
+        run: |
+          mkdir jtl 
+          mkdir html
       - name: run jmx scripts
         run: |
          cd $GITHUB_WORKSPACE/apache-jmeter-5.4.1/bin
