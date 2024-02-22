@@ -45,8 +45,11 @@ jobs:
           unzip -o jpgc-dummy-0.4.zip  && rm jpgc-dummy-0.4.zip
           
       - name: Clear Folder # 清空文件夹
-        run: rm -rf $GITHUB_WORKSPACE/jtl/* # 将 "folderName" 替换成你想要清空的文件夹名称或路径
-        run: rm -rf $GITHUB_WORKSPACE/html/* # 将 "folderName" 替换成你想要清空的文件夹名称或路径
+        run: |
+        rm -rf $GITHUB_WORKSPACE/jtl/* # 将 "folderName" 替换成你想要清空的文件夹名称或路径
+        run: |
+        rm -rf $GITHUB_WORKSPACE/html/* # 将 "folderName" 替换成你想要清空的文件夹名称或路径
+        
       - name: run jmx scripts
         run: |
          cd $GITHUB_WORKSPACE/apache-jmeter-5.4.1/bin
