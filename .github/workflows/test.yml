@@ -49,6 +49,7 @@ jobs:
           pwd
           ls
           cd $GITHUB_WORKSPACE
+          ls
           rm -rf jtl 
           rm -rf html 
       - name: create Folder # 创建文件夹
@@ -56,6 +57,7 @@ jobs:
           pwd
           ls
           cd $GITHUB_WORKSPACE
+          ls
           mkdir jtl 
           mkdir html
       - name: run jmx scripts
