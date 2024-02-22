@@ -46,10 +46,16 @@ jobs:
           
       - name: Clear Folder # 清空文件夹
         run: |
+          pwd
+          ls
+          cd $GITHUB_WORKSPACE
           rm -rf jtl 
           rm -rf html 
       - name: create Folder # 创建文件夹
         run: |
+          pwd
+          ls
+          cd $GITHUB_WORKSPACE
           mkdir jtl 
           mkdir html
       - name: run jmx scripts
