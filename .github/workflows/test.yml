@@ -46,6 +46,7 @@ jobs:
           
       - name: Clear Folder # 清空文件夹
         run: |
+        cd $GITHUB_WORKSPACE
         rm -rf jtl/* # 将 "folderName" 替换成你想要清空的文件夹名称或路径
         run: |
         rm -rf html/* # 将 "folderName" 替换成你想要清空的文件夹名称或路径
