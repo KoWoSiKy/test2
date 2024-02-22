@@ -46,9 +46,8 @@ jobs:
           
       - name: Clear Folder # 清空文件夹
         run: |
-          cd $GITHUB_WORKSPACE
-          rm -rf jtl/* 
-          rm -rf html/* 
+          rm -rf $GITHUB_WORKSPACE/jtl/* 
+          rm -rf $GITHUB_WORKSPACE/html/* 
         
       - name: run jmx scripts
         run: |
