@@ -48,7 +48,7 @@ jobs:
         run: |
          cd $GITHUB_WORKSPACE/apache-jmeter-5.4.1/bin
          for i in $( ls $GITHUB_WORKSPACE/*.jmx); do
-            ./jmeter -n -t $i -l -l result.jtl;
+            ./jmeter -n -t $i -l result.jtl;
          done
       - name: Publish Test Results
         uses: github-actions-ecosystem/action-publish-jmeter-results@v1
