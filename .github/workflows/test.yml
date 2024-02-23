@@ -18,6 +18,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -50,3 +53,8 @@ jobs:
          for i in $( ls $GITHUB_WORKSPACE/*.jmx); do
             ./jmeter -n -t $i -l result.jtl;
          done
+         
+      - name: Publish Test Results
+        uses: github-actions-ecosystem/action-publish-jmeter-results@v1
+        with:
+          report_file: result.jtl
