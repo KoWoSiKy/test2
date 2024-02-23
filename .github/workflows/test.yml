@@ -70,4 +70,4 @@ jobs:
           body: Please find attached the JMeter test report.
           to: 3303656079@qq.com
           from: 3303656079@qq.com
-          attachments: ./$GITHUB_WORKSPACE/download/index.html
+          attachments: ./download/index.html
