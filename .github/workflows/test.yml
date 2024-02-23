@@ -31,28 +31,29 @@ jobs:
            pwd
            ls
 
-      # Runs a set of commands using the runners shell
-      - name: install jmeter
+      - name: Create reports directory
         run: |
-          java -version
-          wget https://mirrors.huaweicloud.com/apache/jmeter/binaries/apache-jmeter-5.4.1.zip
-          unzip apache-jmeter-5.4.1.zip
-          cd apache-jmeter-5.4.1/bin
-          ./jmeter -v
-          pwd
-
-      - name: install plugins
-        run: |
-          cd $GITHUB_WORKSPACE/apache-jmeter-5.4.1
-          wget -q --no-check-certificate https://jmeter-plugins.org/files/packages/jpgc-dummy-0.4.zip  -P .
-          unzip -o jpgc-dummy-0.4.zip  && rm jpgc-dummy-0.4.zip
-          
-      - name: run jmx scripts
-        run: |
-         cd $GITHUB_WORKSPACE/apache-jmeter-5.4.1/bin
-         for i in $( ls $GITHUB_WORKSPACE/*.jmx); do
-            ./jmeter -n -t $i -l result.jtl -v;
-         done
+            mkdir reports
+         
+      - name: JMeter Test
+        uses: QAInsights/PerfAction@v5.6.2
+        with:
+          test-plan-path: testgithubactions.jmx
+          args: "-e -o ./reports/html/"
+             
+      - name: Upload Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-results
+          path: result.jtl
+          if-no-files-found: error
+         
+      - name: Upload HTML Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-html-reports
+          path: reports
+          if-no-files-found: error
       - name: Send email with test report
         uses: dawidd6/action-send-mail@v2
         with:
