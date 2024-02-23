@@ -53,6 +53,7 @@ jobs:
           name: jmeter-html-reports
           path: reports
           if-no-files-found: error
+          
       - name: Send email with test report
         uses: dawidd6/action-send-mail@v2
         with:
@@ -64,4 +65,4 @@ jobs:
           body: Please find attached the JMeter test report.
           to: 3303656079@qq.com
           from: 3303656079@qq.com
-          attachments: result.jtl
+          attachments: ./reports/html/
