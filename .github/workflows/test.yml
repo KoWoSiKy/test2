@@ -66,7 +66,14 @@ jobs:
 
       - name: Create ZIP
         run: |
-          zip -r jmeter-html-reports.zip ./download/jmeter-html-reports
+          cd ./download/
+          zip -r jmeter-html-reports.zip jmeter-html-reports
+      - name: Upload ZIP Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-html-reports.zip
+          path: ./download/jmeter-html-reports.zip
+
       - name: Send email with test report
         uses: dawidd6/action-send-mail@v2
         with:
@@ -78,4 +85,4 @@ jobs:
           body: Please find attached the JMeter test report.
           to: 3303656079@qq.com
           from: 3303656079@qq.com
-          attachments: jmeter-html-reports.zip
+          attachments: ./download/jmeter-html-reports.zip
