@@ -50,7 +50,3 @@ jobs:
          for i in $( ls $GITHUB_WORKSPACE/*.jmx); do
             ./jmeter -n -t $i -l result.jtl;
          done
-      - name: Publish Test Results
-        uses: github-actions-ecosystem/action-publish-jmeter-results@v1
-        with:
-          report_file: result.jtl
