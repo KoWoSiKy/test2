@@ -70,6 +70,8 @@ jobs:
           pwd
           ls
           zip -r jmeter-html-reports.zip html
+          chmod 777 jmeter-html-reports.zip
+          
       - name: Upload ZIP Artifact
         uses: actions/upload-artifact@v3
         with:
