@@ -44,25 +44,13 @@ jobs:
           wget -q --no-check-certificate https://jmeter-plugins.org/files/packages/jpgc-dummy-0.4.zip  -P .
           unzip -o jpgc-dummy-0.4.zip  && rm jpgc-dummy-0.4.zip
           
-      - name: Clear Folder # 清空文件夹
-        run: |
-          pwd
-          ls
-          cd $GITHUB_WORKSPACE
-          ls
-          rm -rf jtl 
-          rm -rf html 
-      - name: create Folder # 创建文件夹
-        run: |
-          pwd
-          ls
-          cd $GITHUB_WORKSPACE
-          ls
-          mkdir jtl 
-          mkdir html
       - name: run jmx scripts
         run: |
          cd $GITHUB_WORKSPACE/apache-jmeter-5.4.1/bin
          for i in $( ls $GITHUB_WORKSPACE/*.jmx); do
-            ./jmeter -n -t $i -l $GITHUB_WORKSPACE/jtl -e -o $GITHUB_WORKSPACE/html;
+            ./jmeter -n -t $i -l -l result.jtl;
          done
+      - name: Publish Test Results
+        uses: github-actions-ecosystem/action-publish-jmeter-results@v1
+        with:
+          report_file: result.jtl
