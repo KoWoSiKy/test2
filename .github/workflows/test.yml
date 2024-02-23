@@ -25,6 +25,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Install zip
+        run: |
+          sudo apt-get install zip
+
       - name: where are the files?
         run: |
           pwd
@@ -59,6 +63,10 @@ jobs:
         with:
           name: jmeter-html-reports
           path: ./download
+
+      - name: Create ZIP
+        run: |
+          zip -r jmeter-html-reports.zip ./download/jmeter-html-reports
       - name: Send email with test report
         uses: dawidd6/action-send-mail@v2
         with:
@@ -70,4 +78,4 @@ jobs:
           body: Please find attached the JMeter test report.
           to: 3303656079@qq.com
           from: 3303656079@qq.com
-          attachments: ./download/index.html
+          attachments: jmeter-html-reports.zip
