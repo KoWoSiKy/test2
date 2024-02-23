@@ -33,6 +33,9 @@ jobs:
       - name: Create reports directory
         run: |
           mkdir reports
+          cd $GITHUB_WORKSPACE
+          pwd
+          ls
 
       - name: JMeter Test
         uses: QAInsights/PerfAction@v5.6.2
