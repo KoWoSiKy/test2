@@ -69,7 +69,7 @@ jobs:
           cd ./download/
           pwd
           ls
-          zip -r jmeter-html-reports.zip jmeter-html-reports
+          zip -r jmeter-html-reports.zip html
       - name: Upload ZIP Artifact
         uses: actions/upload-artifact@v3
         with:
