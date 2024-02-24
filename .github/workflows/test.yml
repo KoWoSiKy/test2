@@ -41,7 +41,7 @@ jobs:
       - name: JMeter Test
         uses: QAInsights/PerfAction@v5.6.2
         with:
-          test-plan-path: testgithubactions.jmx
+          test-plan-path: *.jmx
           args: "-e -o ./reports/html/"
 
       - name: Upload Results
