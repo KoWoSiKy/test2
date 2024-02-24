@@ -85,7 +85,7 @@ jobs:
           server_port: 465
           username: ${{secrets.EMAIL_USERNAME}}
           password: ${{secrets.EMAIL_PASSWORD}}
-          subject: JMeter Test Report
+          subject: JMeter Test Report,zip版本
           body: Please find attached the JMeter test report.
           to: 3303656079@qq.com
           from: 3303656079@qq.com
